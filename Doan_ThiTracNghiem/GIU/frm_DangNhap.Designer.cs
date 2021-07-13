@@ -91,6 +91,7 @@ namespace Doan_ThiTracNghiem.GIU
             this.txt_Pass.Name = "txt_Pass";
             this.txt_Pass.Size = new System.Drawing.Size(259, 32);
             this.txt_Pass.TabIndex = 4;
+            this.txt_Pass.UseSystemPasswordChar = true;
             // 
             // btn_DangNhap
             // 

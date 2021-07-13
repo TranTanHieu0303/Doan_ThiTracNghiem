@@ -63,6 +63,66 @@ namespace Doan_ThiTracNghiem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap button_round_dark_arrow_left_icon {
+            get {
+                object obj = ResourceManager.GetObject("button-round-dark-arrow-left-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap button_round_dark_arrow_right_icon__1_ {
+            get {
+                object obj = ResourceManager.GetObject("button-round-dark-arrow-right-icon (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap button_round_dark_arrow_right_icon__1_1 {
+            get {
+                object obj = ResourceManager.GetObject("button-round-dark-arrow-right-icon (1)1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap button_round_dark_arrow_right_icon__1_11 {
+            get {
+                object obj = ResourceManager.GetObject("button-round-dark-arrow-right-icon (1)11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap button_round_random_icon {
+            get {
+                object obj = ResourceManager.GetObject("button-round-random-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap button_round_random_icon__1_ {
+            get {
+                object obj = ResourceManager.GetObject("button-round-random-icon (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Close_icon__1_ {
             get {
                 object obj = ResourceManager.GetObject("Close-icon (1)", resourceCulture);
@@ -73,9 +133,39 @@ namespace Doan_ThiTracNghiem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap document_excel_icon {
+            get {
+                object obj = ResourceManager.GetObject("document-excel-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap edit_file_icon {
             get {
                 object obj = ResourceManager.GetObject("edit-file-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap excel_xls_icon {
+            get {
+                object obj = ResourceManager.GetObject("excel-xls-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap excel_xls_icon__1_ {
+            get {
+                object obj = ResourceManager.GetObject("excel-xls-icon (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -96,6 +186,16 @@ namespace Doan_ThiTracNghiem.Properties {
         internal static System.Drawing.Bitmap icons8_test_account_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8-test-account-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap korganizer_icon {
+            get {
+                object obj = ResourceManager.GetObject("korganizer-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,6 +253,16 @@ namespace Doan_ThiTracNghiem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ok_icon {
+            get {
+                object obj = ResourceManager.GetObject("ok-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap order_history_icon {
             get {
                 object obj = ResourceManager.GetObject("order-history-icon", resourceCulture);
@@ -173,9 +283,29 @@ namespace Doan_ThiTracNghiem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap System_explorer_icon {
+            get {
+                object obj = ResourceManager.GetObject("System-explorer-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap system_settings_icon {
             get {
                 object obj = ResourceManager.GetObject("system-settings-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap system_user_man_icon {
+            get {
+                object obj = ResourceManager.GetObject("system-user-man-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

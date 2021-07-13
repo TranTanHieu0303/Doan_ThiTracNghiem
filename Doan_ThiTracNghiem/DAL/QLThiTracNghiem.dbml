@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QL_ThiTracNghiem" Class="QLThiDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QL_ThiTracNghiem" Class="QLThiTracNghiemDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-84OEQ03\SQLEXPRESS;Initial Catalog=QL_ThiTracNghiem;Integrated Security=True" SettingsObjectName="Doan_ThiTracNghiem.Properties.Settings" SettingsPropertyName="QL_ThiTracNghiemConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.BaiLam" Member="BaiLams">
     <Type Name="BaiLam">
@@ -40,7 +40,9 @@
       <Column Name="MaMon" Type="System.String" DbType="Char(5)" CanBeNull="true" />
       <Column Name="ThoiGian" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TenDe" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="SoCau" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="DeThi_BaiLam" Member="BaiLams" ThisKey="MaDe" OtherKey="MaDe" Type="BaiLam" />
+      <Association Name="DeThi_LichSuThi" Member="LichSuThis" ThisKey="MaDe" OtherKey="MaDe" Type="LichSuThi" />
       <Association Name="DeThi_LichThi" Member="LichThis" ThisKey="MaDe" OtherKey="MaDe" Type="LichThi" />
       <Association Name="DeThi_NoiDungDe" Member="NoiDungDes" ThisKey="MaDe" OtherKey="MaDe" Type="NoiDungDe" />
       <Association Name="MonThi_DeThi" Member="MonThi" ThisKey="MaMon" OtherKey="MaMon" Type="MonThi" IsForeignKey="true" />
@@ -57,9 +59,14 @@
   </Table>
   <Table Name="dbo.LichSuThi" Member="LichSuThis">
     <Type Name="LichSuThi">
-      <Column Name="MaTK" Type="System.String" DbType="Char(5)" CanBeNull="true" />
-      <Column Name="MaLT" Type="System.String" DbType="Char(5)" CanBeNull="true" />
+      <Column Name="MaTK" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaLT" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Diem" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MaDe" Type="System.String" DbType="Char(5)" CanBeNull="true" />
+      <Column Name="NgayThi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SoCauDung" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="DeThi_LichSuThi" Member="DeThi" ThisKey="MaDe" OtherKey="MaDe" Type="DeThi" IsForeignKey="true" />
+      <Association Name="LichThi_LichSuThi" Member="LichThi" ThisKey="MaLT" OtherKey="MaLT" Type="LichThi" IsForeignKey="true" />
       <Association Name="TaiKhoan_LichSuThi" Member="TaiKhoan" ThisKey="MaTK" OtherKey="MaUse" Type="TaiKhoan" IsForeignKey="true" />
     </Type>
   </Table>
@@ -69,10 +76,12 @@
       <Column Name="MaGV" Type="System.String" DbType="Char(5)" CanBeNull="true" />
       <Column Name="MaDe" Type="System.String" DbType="Char(5)" CanBeNull="true" />
       <Column Name="NgayThi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TenKyThi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="LichThi_ThamGiaThi" Member="ThamGiaThis" ThisKey="MaLT" OtherKey="MaLT" Type="ThamGiaThi" />
       <Association Name="LichThi_Diem" Member="Diems" ThisKey="MaLT" OtherKey="MaLT" Type="Diem" />
+      <Association Name="LichThi_LichSuThi" Member="LichSuThis" ThisKey="MaLT" OtherKey="MaLT" Type="LichSuThi" />
       <Association Name="DeThi_LichThi" Member="DeThi" ThisKey="MaDe" OtherKey="MaDe" Type="DeThi" IsForeignKey="true" />
-      <Association Name="TaiKhoan_LichThi" Member="TaiKhoan" ThisKey="MaLT" OtherKey="MaUse" Type="TaiKhoan" IsForeignKey="true" />
+      <Association Name="TaiKhoan_LichThi" Member="TaiKhoan" ThisKey="MaGV" OtherKey="MaUse" Type="TaiKhoan" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.LoaiTaiKhoan" Member="LoaiTaiKhoans">
@@ -127,8 +136,20 @@
       <Association Name="TaiKhoan_ChucNangTaiKhoan" Member="ChucNangTaiKhoans" ThisKey="MaUse" OtherKey="MaTK" Type="ChucNangTaiKhoan" />
       <Association Name="TaiKhoan_Diem" Member="Diems" ThisKey="MaUse" OtherKey="MaTK" Type="Diem" />
       <Association Name="TaiKhoan_LichSuThi" Member="LichSuThis" ThisKey="MaUse" OtherKey="MaTK" Type="LichSuThi" />
-      <Association Name="TaiKhoan_LichThi" Member="LichThi" ThisKey="MaUse" OtherKey="MaLT" Type="LichThi" Cardinality="One" />
+      <Association Name="TaiKhoan_LichThi" Member="LichThis" ThisKey="MaUse" OtherKey="MaGV" Type="LichThi" />
       <Association Name="LoaiTaiKhoan_TaiKhoan" Member="LoaiTaiKhoan" ThisKey="LoaiTK" OtherKey="Maloai" Type="LoaiTaiKhoan" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_LichSuThi" Member="View_LichSuThis">
+    <Type Name="View_LichSuThi">
+      <Column Name="MaLT" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
+      <Column Name="MaTK" Type="System.String" DbType="Char(5) NOT NULL" CanBeNull="false" />
+      <Column Name="Diem" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="NgayThi" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SoCauDung" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TenMon" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ThoiGian" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SoCau" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

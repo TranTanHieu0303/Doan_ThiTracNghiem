@@ -63,6 +63,36 @@ namespace Doan_ThiTracNghiem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Actions_contact_new_icon {
+            get {
+                object obj = ResourceManager.GetObject("Actions-contact-new-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Actions_contact_new_icon__1_ {
+            get {
+                object obj = ResourceManager.GetObject("Actions-contact-new-icon (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Alarm_Clock_Coloring_Sheets_to_Print__1_ {
+            get {
+                object obj = ResourceManager.GetObject("Alarm-Clock-Coloring-Sheets-to-Print (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap button_round_dark_arrow_left_icon {
             get {
                 object obj = ResourceManager.GetObject("button-round-dark-arrow-left-icon", resourceCulture);
@@ -276,6 +306,16 @@ namespace Doan_ThiTracNghiem.Properties {
         internal static System.Drawing.Bitmap pngegg {
             get {
                 object obj = ResourceManager.GetObject("pngegg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap profile_remove_icon {
+            get {
+                object obj = ResourceManager.GetObject("profile-remove-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

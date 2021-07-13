@@ -28,7 +28,9 @@ namespace Doan_ThiTracNghiem.GIU
             cbb_TenMon.DisplayMember = "TenMon";
             cbb_TenMon.ValueMember = "MaMon";
             btn_TaoDe.Visible = false;
-            dgv_TatCacTS.DataSource = XL.loadTaiKhoanTheoLoai("LTK02");
+            cbb_taikhoan.DataSource = XL.loadTaiKhoanTheoLoai("LTK02");
+            cbb_taikhoan.DisplayMember = "HoTen";
+            cbb_taikhoan.ValueMember = "MaUse";
 
         }
 
@@ -44,6 +46,7 @@ namespace Doan_ThiTracNghiem.GIU
             {
                 dataGridView1.DataSource = XL.loadExcel(ofd).Tables[0];
                 txt_soccau.Value = dataGridView1.Rows.Count-1;
+                
             }
         }
 
@@ -107,7 +110,7 @@ namespace Doan_ThiTracNghiem.GIU
             }
             DateTime myDate = dtp_ngaythi.Value.Date +
                     dtp_giothi.Value.TimeOfDay;
-            if (XL.themLichThi(maLT,tk.MaUse,made,myDate))
+            if (XL.themLichThi(maLT,tk.MaUse,made,myDate,txt_tenkythi.Text))
             {
                 MessageBox.Show("Thành Công", "Thông Báo");
             }    
@@ -131,7 +134,6 @@ namespace Doan_ThiTracNghiem.GIU
 
         private void dataGridView1_DataSourceChanged(object sender, EventArgs e)
         {
-            txt_soccau.Value = dataGridView1.Rows.Count;
         }
 
         private void btn_TaoDe_Click(object sender, EventArgs e)
@@ -141,10 +143,18 @@ namespace Doan_ThiTracNghiem.GIU
 
         private void btn_AddTS_Click(object sender, EventArgs e)
         {
-            if(dgv_TatCacTS.CurrentRow !=null)
-            {
-                dgv_TSThamGia.Rows.Add(dgv_TatCacTS.CurrentRow);
-            }    
+        }
+
+        private void btn_AddTK_Click(object sender, EventArgs e)
+        {
+            XL.themNguoiThamGiaThi(maLT, cbb_taikhoan.SelectedValue.ToString());
+            dgv_TSThamGia.DataSource = XL.loadTkThamGiaThi();
+        }
+
+        private void btn_RemoTK_Click(object sender, EventArgs e)
+        {
+            XL.xoaNguoiThamGiaThi(dgv_TSThamGia.CurrentRow.Cells[0].Value.ToString());
+            dgv_TSThamGia.DataSource = XL.loadTkThamGiaThi();
         }
     }
 }

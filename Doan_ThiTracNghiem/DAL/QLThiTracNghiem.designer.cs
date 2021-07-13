@@ -23,7 +23,7 @@ namespace Doan_ThiTracNghiem.DAL
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="QL_ThiTracNghiem")]
-	public partial class QLThiDataContext : System.Data.Linq.DataContext
+	public partial class QLThiTracNghiemDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -48,6 +48,9 @@ namespace Doan_ThiTracNghiem.DAL
     partial void InsertDiem(Diem instance);
     partial void UpdateDiem(Diem instance);
     partial void DeleteDiem(Diem instance);
+    partial void InsertLichSuThi(LichSuThi instance);
+    partial void UpdateLichSuThi(LichSuThi instance);
+    partial void DeleteLichSuThi(LichSuThi instance);
     partial void InsertLichThi(LichThi instance);
     partial void UpdateLichThi(LichThi instance);
     partial void DeleteLichThi(LichThi instance);
@@ -68,31 +71,31 @@ namespace Doan_ThiTracNghiem.DAL
     partial void DeleteTaiKhoan(TaiKhoan instance);
     #endregion
 		
-		public QLThiDataContext() : 
+		public QLThiTracNghiemDataContext() : 
 				base(global::Doan_ThiTracNghiem.Properties.Settings.Default.QL_ThiTracNghiemConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public QLThiDataContext(string connection) : 
+		public QLThiTracNghiemDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public QLThiDataContext(System.Data.IDbConnection connection) : 
+		public QLThiTracNghiemDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public QLThiDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public QLThiTracNghiemDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public QLThiDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public QLThiTracNghiemDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
@@ -199,6 +202,14 @@ namespace Doan_ThiTracNghiem.DAL
 			get
 			{
 				return this.GetTable<TaiKhoan>();
+			}
+		}
+		
+		public System.Data.Linq.Table<View_LichSuThi> View_LichSuThis
+		{
+			get
+			{
+				return this.GetTable<View_LichSuThi>();
 			}
 		}
 	}
@@ -924,7 +935,11 @@ namespace Doan_ThiTracNghiem.DAL
 		
 		private string _TenDe;
 		
+		private System.Nullable<int> _SoCau;
+		
 		private EntitySet<BaiLam> _BaiLams;
+		
+		private EntitySet<LichSuThi> _LichSuThis;
 		
 		private EntitySet<LichThi> _LichThis;
 		
@@ -944,11 +959,14 @@ namespace Doan_ThiTracNghiem.DAL
     partial void OnThoiGianChanged();
     partial void OnTenDeChanging(string value);
     partial void OnTenDeChanged();
+    partial void OnSoCauChanging(System.Nullable<int> value);
+    partial void OnSoCauChanged();
     #endregion
 		
 		public DeThi()
 		{
 			this._BaiLams = new EntitySet<BaiLam>(new Action<BaiLam>(this.attach_BaiLams), new Action<BaiLam>(this.detach_BaiLams));
+			this._LichSuThis = new EntitySet<LichSuThi>(new Action<LichSuThi>(this.attach_LichSuThis), new Action<LichSuThi>(this.detach_LichSuThis));
 			this._LichThis = new EntitySet<LichThi>(new Action<LichThi>(this.attach_LichThis), new Action<LichThi>(this.detach_LichThis));
 			this._NoiDungDes = new EntitySet<NoiDungDe>(new Action<NoiDungDe>(this.attach_NoiDungDes), new Action<NoiDungDe>(this.detach_NoiDungDes));
 			this._MonThi = default(EntityRef<MonThi>);
@@ -1039,6 +1057,26 @@ namespace Doan_ThiTracNghiem.DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoCau", DbType="Int")]
+		public System.Nullable<int> SoCau
+		{
+			get
+			{
+				return this._SoCau;
+			}
+			set
+			{
+				if ((this._SoCau != value))
+				{
+					this.OnSoCauChanging(value);
+					this.SendPropertyChanging();
+					this._SoCau = value;
+					this.SendPropertyChanged("SoCau");
+					this.OnSoCauChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DeThi_BaiLam", Storage="_BaiLams", ThisKey="MaDe", OtherKey="MaDe")]
 		public EntitySet<BaiLam> BaiLams
 		{
@@ -1049,6 +1087,19 @@ namespace Doan_ThiTracNghiem.DAL
 			set
 			{
 				this._BaiLams.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DeThi_LichSuThi", Storage="_LichSuThis", ThisKey="MaDe", OtherKey="MaDe")]
+		public EntitySet<LichSuThi> LichSuThis
+		{
+			get
+			{
+				return this._LichSuThis;
+			}
+			set
+			{
+				this._LichSuThis.Assign(value);
 			}
 		}
 		
@@ -1139,6 +1190,18 @@ namespace Doan_ThiTracNghiem.DAL
 		}
 		
 		private void detach_BaiLams(BaiLam entity)
+		{
+			this.SendPropertyChanging();
+			entity.DeThi = null;
+		}
+		
+		private void attach_LichSuThis(LichSuThi entity)
+		{
+			this.SendPropertyChanging();
+			entity.DeThi = this;
+		}
+		
+		private void detach_LichSuThis(LichSuThi entity)
 		{
 			this.SendPropertyChanging();
 			entity.DeThi = null;
@@ -1362,8 +1425,10 @@ namespace Doan_ThiTracNghiem.DAL
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.LichSuThi")]
-	public partial class LichSuThi
+	public partial class LichSuThi : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private string _MaTK;
 		
@@ -1371,11 +1436,45 @@ namespace Doan_ThiTracNghiem.DAL
 		
 		private System.Nullable<double> _Diem;
 		
+		private string _MaDe;
+		
+		private System.Nullable<System.DateTime> _NgayThi;
+		
+		private System.Nullable<int> _SoCauDung;
+		
+		private EntityRef<DeThi> _DeThi;
+		
+		private EntityRef<LichThi> _LichThi;
+		
+		private EntityRef<TaiKhoan> _TaiKhoan;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMaTKChanging(string value);
+    partial void OnMaTKChanged();
+    partial void OnMaLTChanging(string value);
+    partial void OnMaLTChanged();
+    partial void OnDiemChanging(System.Nullable<double> value);
+    partial void OnDiemChanged();
+    partial void OnMaDeChanging(string value);
+    partial void OnMaDeChanged();
+    partial void OnNgayThiChanging(System.Nullable<System.DateTime> value);
+    partial void OnNgayThiChanged();
+    partial void OnSoCauDungChanging(System.Nullable<int> value);
+    partial void OnSoCauDungChanged();
+    #endregion
+		
 		public LichSuThi()
 		{
+			this._DeThi = default(EntityRef<DeThi>);
+			this._LichThi = default(EntityRef<LichThi>);
+			this._TaiKhoan = default(EntityRef<TaiKhoan>);
+			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTK", DbType="Char(5)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTK", DbType="Char(5) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MaTK
 		{
 			get
@@ -1386,12 +1485,20 @@ namespace Doan_ThiTracNghiem.DAL
 			{
 				if ((this._MaTK != value))
 				{
+					if (this._TaiKhoan.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaTKChanging(value);
+					this.SendPropertyChanging();
 					this._MaTK = value;
+					this.SendPropertyChanged("MaTK");
+					this.OnMaTKChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaLT", DbType="Char(5)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaLT", DbType="Char(5) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MaLT
 		{
 			get
@@ -1402,7 +1509,15 @@ namespace Doan_ThiTracNghiem.DAL
 			{
 				if ((this._MaLT != value))
 				{
+					if (this._LichThi.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaLTChanging(value);
+					this.SendPropertyChanging();
 					this._MaLT = value;
+					this.SendPropertyChanged("MaLT");
+					this.OnMaLTChanged();
 				}
 			}
 		}
@@ -1418,8 +1533,198 @@ namespace Doan_ThiTracNghiem.DAL
 			{
 				if ((this._Diem != value))
 				{
+					this.OnDiemChanging(value);
+					this.SendPropertyChanging();
 					this._Diem = value;
+					this.SendPropertyChanged("Diem");
+					this.OnDiemChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaDe", DbType="Char(5)")]
+		public string MaDe
+		{
+			get
+			{
+				return this._MaDe;
+			}
+			set
+			{
+				if ((this._MaDe != value))
+				{
+					if (this._DeThi.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaDeChanging(value);
+					this.SendPropertyChanging();
+					this._MaDe = value;
+					this.SendPropertyChanged("MaDe");
+					this.OnMaDeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayThi", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayThi
+		{
+			get
+			{
+				return this._NgayThi;
+			}
+			set
+			{
+				if ((this._NgayThi != value))
+				{
+					this.OnNgayThiChanging(value);
+					this.SendPropertyChanging();
+					this._NgayThi = value;
+					this.SendPropertyChanged("NgayThi");
+					this.OnNgayThiChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoCauDung", DbType="Int")]
+		public System.Nullable<int> SoCauDung
+		{
+			get
+			{
+				return this._SoCauDung;
+			}
+			set
+			{
+				if ((this._SoCauDung != value))
+				{
+					this.OnSoCauDungChanging(value);
+					this.SendPropertyChanging();
+					this._SoCauDung = value;
+					this.SendPropertyChanged("SoCauDung");
+					this.OnSoCauDungChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DeThi_LichSuThi", Storage="_DeThi", ThisKey="MaDe", OtherKey="MaDe", IsForeignKey=true)]
+		public DeThi DeThi
+		{
+			get
+			{
+				return this._DeThi.Entity;
+			}
+			set
+			{
+				DeThi previousValue = this._DeThi.Entity;
+				if (((previousValue != value) 
+							|| (this._DeThi.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DeThi.Entity = null;
+						previousValue.LichSuThis.Remove(this);
+					}
+					this._DeThi.Entity = value;
+					if ((value != null))
+					{
+						value.LichSuThis.Add(this);
+						this._MaDe = value.MaDe;
+					}
+					else
+					{
+						this._MaDe = default(string);
+					}
+					this.SendPropertyChanged("DeThi");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LichThi_LichSuThi", Storage="_LichThi", ThisKey="MaLT", OtherKey="MaLT", IsForeignKey=true)]
+		public LichThi LichThi
+		{
+			get
+			{
+				return this._LichThi.Entity;
+			}
+			set
+			{
+				LichThi previousValue = this._LichThi.Entity;
+				if (((previousValue != value) 
+							|| (this._LichThi.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._LichThi.Entity = null;
+						previousValue.LichSuThis.Remove(this);
+					}
+					this._LichThi.Entity = value;
+					if ((value != null))
+					{
+						value.LichSuThis.Add(this);
+						this._MaLT = value.MaLT;
+					}
+					else
+					{
+						this._MaLT = default(string);
+					}
+					this.SendPropertyChanged("LichThi");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TaiKhoan_LichSuThi", Storage="_TaiKhoan", ThisKey="MaTK", OtherKey="MaUse", IsForeignKey=true)]
+		public TaiKhoan TaiKhoan
+		{
+			get
+			{
+				return this._TaiKhoan.Entity;
+			}
+			set
+			{
+				TaiKhoan previousValue = this._TaiKhoan.Entity;
+				if (((previousValue != value) 
+							|| (this._TaiKhoan.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TaiKhoan.Entity = null;
+						previousValue.LichSuThis.Remove(this);
+					}
+					this._TaiKhoan.Entity = value;
+					if ((value != null))
+					{
+						value.LichSuThis.Add(this);
+						this._MaTK = value.MaUse;
+					}
+					else
+					{
+						this._MaTK = default(string);
+					}
+					this.SendPropertyChanged("TaiKhoan");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -1438,9 +1743,13 @@ namespace Doan_ThiTracNghiem.DAL
 		
 		private System.Nullable<System.DateTime> _NgayThi;
 		
+		private string _TenKyThi;
+		
 		private EntitySet<ThamGiaThi> _ThamGiaThis;
 		
 		private EntitySet<Diem> _Diems;
+		
+		private EntitySet<LichSuThi> _LichSuThis;
 		
 		private EntityRef<DeThi> _DeThi;
 		
@@ -1458,12 +1767,15 @@ namespace Doan_ThiTracNghiem.DAL
     partial void OnMaDeChanged();
     partial void OnNgayThiChanging(System.Nullable<System.DateTime> value);
     partial void OnNgayThiChanged();
+    partial void OnTenKyThiChanging(string value);
+    partial void OnTenKyThiChanged();
     #endregion
 		
 		public LichThi()
 		{
 			this._ThamGiaThis = new EntitySet<ThamGiaThi>(new Action<ThamGiaThi>(this.attach_ThamGiaThis), new Action<ThamGiaThi>(this.detach_ThamGiaThis));
 			this._Diems = new EntitySet<Diem>(new Action<Diem>(this.attach_Diems), new Action<Diem>(this.detach_Diems));
+			this._LichSuThis = new EntitySet<LichSuThi>(new Action<LichSuThi>(this.attach_LichSuThis), new Action<LichSuThi>(this.detach_LichSuThis));
 			this._DeThi = default(EntityRef<DeThi>);
 			this._TaiKhoan = default(EntityRef<TaiKhoan>);
 			OnCreated();
@@ -1480,10 +1792,6 @@ namespace Doan_ThiTracNghiem.DAL
 			{
 				if ((this._MaLT != value))
 				{
-					if (this._TaiKhoan.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnMaLTChanging(value);
 					this.SendPropertyChanging();
 					this._MaLT = value;
@@ -1504,6 +1812,10 @@ namespace Doan_ThiTracNghiem.DAL
 			{
 				if ((this._MaGV != value))
 				{
+					if (this._TaiKhoan.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnMaGVChanging(value);
 					this.SendPropertyChanging();
 					this._MaGV = value;
@@ -1557,6 +1869,26 @@ namespace Doan_ThiTracNghiem.DAL
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenKyThi", DbType="NVarChar(50)")]
+		public string TenKyThi
+		{
+			get
+			{
+				return this._TenKyThi;
+			}
+			set
+			{
+				if ((this._TenKyThi != value))
+				{
+					this.OnTenKyThiChanging(value);
+					this.SendPropertyChanging();
+					this._TenKyThi = value;
+					this.SendPropertyChanged("TenKyThi");
+					this.OnTenKyThiChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LichThi_ThamGiaThi", Storage="_ThamGiaThis", ThisKey="MaLT", OtherKey="MaLT")]
 		public EntitySet<ThamGiaThi> ThamGiaThis
 		{
@@ -1580,6 +1912,19 @@ namespace Doan_ThiTracNghiem.DAL
 			set
 			{
 				this._Diems.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LichThi_LichSuThi", Storage="_LichSuThis", ThisKey="MaLT", OtherKey="MaLT")]
+		public EntitySet<LichSuThi> LichSuThis
+		{
+			get
+			{
+				return this._LichSuThis;
+			}
+			set
+			{
+				this._LichSuThis.Assign(value);
 			}
 		}
 		
@@ -1617,7 +1962,7 @@ namespace Doan_ThiTracNghiem.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TaiKhoan_LichThi", Storage="_TaiKhoan", ThisKey="MaLT", OtherKey="MaUse", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TaiKhoan_LichThi", Storage="_TaiKhoan", ThisKey="MaGV", OtherKey="MaUse", IsForeignKey=true)]
 		public TaiKhoan TaiKhoan
 		{
 			get
@@ -1634,17 +1979,17 @@ namespace Doan_ThiTracNghiem.DAL
 					if ((previousValue != null))
 					{
 						this._TaiKhoan.Entity = null;
-						previousValue.LichThi = null;
+						previousValue.LichThis.Remove(this);
 					}
 					this._TaiKhoan.Entity = value;
 					if ((value != null))
 					{
-						value.LichThi = this;
-						this._MaLT = value.MaUse;
+						value.LichThis.Add(this);
+						this._MaGV = value.MaUse;
 					}
 					else
 					{
-						this._MaLT = default(string);
+						this._MaGV = default(string);
 					}
 					this.SendPropertyChanged("TaiKhoan");
 				}
@@ -1690,6 +2035,18 @@ namespace Doan_ThiTracNghiem.DAL
 		}
 		
 		private void detach_Diems(Diem entity)
+		{
+			this.SendPropertyChanging();
+			entity.LichThi = null;
+		}
+		
+		private void attach_LichSuThis(LichSuThi entity)
+		{
+			this.SendPropertyChanging();
+			entity.LichThi = this;
+		}
+		
+		private void detach_LichSuThis(LichSuThi entity)
 		{
 			this.SendPropertyChanging();
 			entity.LichThi = null;
@@ -2410,7 +2767,9 @@ namespace Doan_ThiTracNghiem.DAL
 		
 		private EntitySet<Diem> _Diems;
 		
-		private EntityRef<LichThi> _LichThi;
+		private EntitySet<LichSuThi> _LichSuThis;
+		
+		private EntitySet<LichThi> _LichThis;
 		
 		private EntityRef<LoaiTaiKhoan> _LoaiTaiKhoan;
 		
@@ -2444,7 +2803,8 @@ namespace Doan_ThiTracNghiem.DAL
 			this._ThamGiaThis = new EntitySet<ThamGiaThi>(new Action<ThamGiaThi>(this.attach_ThamGiaThis), new Action<ThamGiaThi>(this.detach_ThamGiaThis));
 			this._ChucNangTaiKhoans = new EntitySet<ChucNangTaiKhoan>(new Action<ChucNangTaiKhoan>(this.attach_ChucNangTaiKhoans), new Action<ChucNangTaiKhoan>(this.detach_ChucNangTaiKhoans));
 			this._Diems = new EntitySet<Diem>(new Action<Diem>(this.attach_Diems), new Action<Diem>(this.detach_Diems));
-			this._LichThi = default(EntityRef<LichThi>);
+			this._LichSuThis = new EntitySet<LichSuThi>(new Action<LichSuThi>(this.attach_LichSuThis), new Action<LichSuThi>(this.detach_LichSuThis));
+			this._LichThis = new EntitySet<LichThi>(new Action<LichThi>(this.attach_LichThis), new Action<LichThi>(this.detach_LichThis));
 			this._LoaiTaiKhoan = default(EntityRef<LoaiTaiKhoan>);
 			OnCreated();
 		}
@@ -2685,32 +3045,29 @@ namespace Doan_ThiTracNghiem.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TaiKhoan_LichThi", Storage="_LichThi", ThisKey="MaUse", OtherKey="MaLT", IsUnique=true, IsForeignKey=false)]
-		public LichThi LichThi
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TaiKhoan_LichSuThi", Storage="_LichSuThis", ThisKey="MaUse", OtherKey="MaTK")]
+		public EntitySet<LichSuThi> LichSuThis
 		{
 			get
 			{
-				return this._LichThi.Entity;
+				return this._LichSuThis;
 			}
 			set
 			{
-				LichThi previousValue = this._LichThi.Entity;
-				if (((previousValue != value) 
-							|| (this._LichThi.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._LichThi.Entity = null;
-						previousValue.TaiKhoan = null;
-					}
-					this._LichThi.Entity = value;
-					if ((value != null))
-					{
-						value.TaiKhoan = this;
-					}
-					this.SendPropertyChanged("LichThi");
-				}
+				this._LichSuThis.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TaiKhoan_LichThi", Storage="_LichThis", ThisKey="MaUse", OtherKey="MaGV")]
+		public EntitySet<LichThi> LichThis
+		{
+			get
+			{
+				return this._LichThis;
+			}
+			set
+			{
+				this._LichThis.Assign(value);
 			}
 		}
 		
@@ -2814,6 +3171,183 @@ namespace Doan_ThiTracNghiem.DAL
 		{
 			this.SendPropertyChanging();
 			entity.TaiKhoan = null;
+		}
+		
+		private void attach_LichSuThis(LichSuThi entity)
+		{
+			this.SendPropertyChanging();
+			entity.TaiKhoan = this;
+		}
+		
+		private void detach_LichSuThis(LichSuThi entity)
+		{
+			this.SendPropertyChanging();
+			entity.TaiKhoan = null;
+		}
+		
+		private void attach_LichThis(LichThi entity)
+		{
+			this.SendPropertyChanging();
+			entity.TaiKhoan = this;
+		}
+		
+		private void detach_LichThis(LichThi entity)
+		{
+			this.SendPropertyChanging();
+			entity.TaiKhoan = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.View_LichSuThi")]
+	public partial class View_LichSuThi
+	{
+		
+		private string _MaLT;
+		
+		private string _MaTK;
+		
+		private System.Nullable<double> _Diem;
+		
+		private System.Nullable<System.DateTime> _NgayThi;
+		
+		private System.Nullable<int> _SoCauDung;
+		
+		private string _TenMon;
+		
+		private System.Nullable<int> _ThoiGian;
+		
+		private System.Nullable<int> _SoCau;
+		
+		public View_LichSuThi()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaLT", DbType="Char(5) NOT NULL", CanBeNull=false)]
+		public string MaLT
+		{
+			get
+			{
+				return this._MaLT;
+			}
+			set
+			{
+				if ((this._MaLT != value))
+				{
+					this._MaLT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaTK", DbType="Char(5) NOT NULL", CanBeNull=false)]
+		public string MaTK
+		{
+			get
+			{
+				return this._MaTK;
+			}
+			set
+			{
+				if ((this._MaTK != value))
+				{
+					this._MaTK = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Diem", DbType="Float")]
+		public System.Nullable<double> Diem
+		{
+			get
+			{
+				return this._Diem;
+			}
+			set
+			{
+				if ((this._Diem != value))
+				{
+					this._Diem = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NgayThi", DbType="DateTime")]
+		public System.Nullable<System.DateTime> NgayThi
+		{
+			get
+			{
+				return this._NgayThi;
+			}
+			set
+			{
+				if ((this._NgayThi != value))
+				{
+					this._NgayThi = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoCauDung", DbType="Int")]
+		public System.Nullable<int> SoCauDung
+		{
+			get
+			{
+				return this._SoCauDung;
+			}
+			set
+			{
+				if ((this._SoCauDung != value))
+				{
+					this._SoCauDung = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenMon", DbType="NVarChar(100)")]
+		public string TenMon
+		{
+			get
+			{
+				return this._TenMon;
+			}
+			set
+			{
+				if ((this._TenMon != value))
+				{
+					this._TenMon = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ThoiGian", DbType="Int")]
+		public System.Nullable<int> ThoiGian
+		{
+			get
+			{
+				return this._ThoiGian;
+			}
+			set
+			{
+				if ((this._ThoiGian != value))
+				{
+					this._ThoiGian = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SoCau", DbType="Int")]
+		public System.Nullable<int> SoCau
+		{
+			get
+			{
+				return this._SoCau;
+			}
+			set
+			{
+				if ((this._SoCau != value))
+				{
+					this._SoCau = value;
+				}
+			}
 		}
 	}
 }

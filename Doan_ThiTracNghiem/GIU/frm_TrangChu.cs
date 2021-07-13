@@ -69,5 +69,39 @@ namespace Doan_ThiTracNghiem.GIU
             frm.tk = tk;
             frm.Show();
         }
+
+        private void btn_ThiTheoLich_Click(object sender, EventArgs e)
+        {
+            if(XL.loadMonThi(tk.MaUse).Count==0)
+            {
+                MessageBox.Show("Hôm Nay bạn Không Có Lịch Thi");
+            }   
+            else
+            {
+                frm_Chuanbi frm = new frm_Chuanbi();
+                frm.tk = tk;
+                frm.Show();
+            }    
+        }
+
+        private void btn_lamBaiThi_Click(object sender, EventArgs e)
+        {
+            menu_BaiThi.Show(btn_lamBaiThi, new Point(0, btn_lamBaiThi.Height));
+        }
+
+        private void btn_LichSu_Click(object sender, EventArgs e)
+        {
+            frm_LichSuThi frm = new frm_LichSuThi();
+            frm.tk = tk;
+            frm.Show();
+        }
+
+        private void tsm_QLTK_Click(object sender, EventArgs e)
+        {
+            frm_QLTaiKhoan frm = new frm_QLTaiKhoan();
+            frm.tk = tk;
+            frm.Show();
+
+        }
     }
 }

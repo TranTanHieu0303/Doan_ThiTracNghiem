@@ -10,27 +10,33 @@ using Doan_ThiTracNghiem.DAL;
 using ExcelDataReader;
 using Firebase.Auth;
 using Firebase.Storage;
+using Accord.MachineLearning;
 
 namespace Doan_ThiTracNghiem.BLL
 {
     public class XuLy
     {
-        QLThiDataContext dataContext = new QLThiDataContext();
+        QLThiTracNghiemDataContext dataContext = new QLThiTracNghiemDataContext();
+        QL_ThiTracNghiemDataSet dataSet = new QL_ThiTracNghiemDataSet();
+       //Kiểm tra đăng nhập
         public TaiKhoan ktDangNhap(string pUse, string pPass)
         {
-
+            
             TaiKhoan tk = dataContext.TaiKhoans.FirstOrDefault(u => u.Usename == pUse && u.Pass == pPass);
             return tk;
 
         }
+       //Load tất cả tài khoản
         public List<TaiKhoan> loadUse()
         {
             return dataContext.TaiKhoans.ToList();
         }
+        //loai danh sách tài khoản theo mã loại nhập vạo
         public List<TaiKhoan> loadTaiKhoanTheoLoai(string pMaLoai)
         {
             return dataContext.TaiKhoans.Where(t => t.LoaiTK == pMaLoai).ToList();
         }
+       //tạo mới chó một tài khoản.
         public string themMaUse()
         {
             TaiKhoan tk;
@@ -48,6 +54,7 @@ namespace Doan_ThiTracNghiem.BLL
                 return "TK0" + (Ma + 1);
             return "TK" + (Ma + 1);
         }
+        //tạo mã mới cho một câu hỏi
         public string themMaCauHoi()
         {
             NganHangCauHoi ch;
@@ -65,6 +72,7 @@ namespace Doan_ThiTracNghiem.BLL
                 return "CH0" + (Ma + 1);
             return "CH" + (Ma + 1);
         }
+        // thêm mới mội tài khoản và lưu vào database.
         public async void themUseAsync(string pMaUSe, string pTenDN, string pMatKhau, string pHoTen, string pGioiTinh, DateTime pNgaySinh, string pNoiSinh, OpenFileDialog pHinhAnh, string pLoaiTK)
         {
             try
@@ -113,6 +121,7 @@ namespace Doan_ThiTracNghiem.BLL
 
 
         }
+        // Chỉnh sửa thông tin của một tài khoản
         public async void suaUseAsync(string pMaUSe, string pTenDN, string pMatKhau, string pHoTen, string pGioiTinh, DateTime pNgaySinh, string pNoiSinh, OpenFileDialog pHinhAnh, string pLoaiTK)
         {
             try
@@ -163,6 +172,7 @@ namespace Doan_ThiTracNghiem.BLL
 
 
         }
+        //Lấy danh sách các chức năng của tài khoản nhập vào
         public List<ChucNangTaiKhoan> loadQuyen(string pMaUse)
         {
             return dataContext.ChucNangTaiKhoans.Where(cn => cn.MaTK == pMaUse).ToList();
@@ -195,6 +205,7 @@ namespace Doan_ThiTracNghiem.BLL
 
             return ds;
         }
+        // lấy dach sách môn thi
         public List<MonThi> loadMon()
         {
             return dataContext.MonThis.ToList();
@@ -222,14 +233,18 @@ namespace Doan_ThiTracNghiem.BLL
                 return false;
             }
         }
+        // lấy danh sách câu hỏi theo môn nhập vào
         public List<NganHangCauHoi> loadNganHangCauHoi(string pMaMon)
         {
             return dataContext.NganHangCauHois.Where(ch => ch.MaMon == pMaMon).ToList();
         }
+        // tạo đè với môn và số câu nhập vào
         public List<NganHangCauHoi> taoDeNgauNhieu(string pMaMon, int pSocau)
         {
-            return dataContext.NganHangCauHois.OrderBy(t => Guid.NewGuid()).ToList();
+            List<NganHangCauHoi> lst = dataContext.NganHangCauHois.Where(t=>t.MaMon==pMaMon).ToList();
+            return lst.OrderBy(emp => Guid.NewGuid()).Take(pSocau).ToList();
         }
+        // tạo mã đề mới.
         public string themMaDe()
         {
             DeThi dt;
@@ -247,6 +262,7 @@ namespace Doan_ThiTracNghiem.BLL
                 return "DT0" + (Ma + 1);
             return "DT" + (Ma + 1);
         }
+        // thêm dề vào database.
         public bool themDe(string pMaDe, string pTenDe, string pMaMon, int pThoiGian)
         {
             try
@@ -263,6 +279,7 @@ namespace Doan_ThiTracNghiem.BLL
             catch
             { return false; }
         }
+        //câu các câu hỏi vào đề với mã đề và mã câu hỏi nhập vào.
         public bool themNoidungDe(string pMaDe, string pMaCH)
         {
             try
@@ -273,8 +290,10 @@ namespace Doan_ThiTracNghiem.BLL
                 dataContext.NoiDungDes.InsertOnSubmit(nd);
                 dataContext.SubmitChanges();
                 return true;
-            }catch { return false; }
+            }
+            catch { return false; }
         }
+        // tạo mã lịch thi
         public string themMaLichThi()
         {
             LichThi lichThi;
@@ -292,7 +311,8 @@ namespace Doan_ThiTracNghiem.BLL
                 return "LT0" + (Ma + 1);
             return "LT" + (Ma + 1);
         }
-        public bool themLichThi(string pMaLT, string pMaGV, string pMaDe, DateTime pNgayThi)
+        // thêm lịch thi mới
+        public bool themLichThi(string pMaLT, string pMaGV, string pMaDe, DateTime pNgayThi,string pTenKythi)
         {
             try
             {
@@ -301,16 +321,178 @@ namespace Doan_ThiTracNghiem.BLL
                 lt.MaDe = pMaDe;
                 lt.MaGV = pMaGV;
                 lt.NgayThi = pNgayThi;
+                lt.TenKyThi = pTenKythi;
                 dataContext.LichThis.InsertOnSubmit(lt);
                 dataContext.SubmitChanges();
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return false; 
+                return false;
             }
+            
+        }
+        //Thêm ngời tham gia thi vào lịch thi
+        public bool themNguoiThamGiaThi(string pMaLT, string pMaTK)
+        {
+            try
+            {
+                ThamGiaThi thamGiaThi = new ThamGiaThi();
+                thamGiaThi.MaLT = pMaLT;
+                thamGiaThi.MaTK = pMaTK;
+                dataContext.ThamGiaThis.InsertOnSubmit(thamGiaThi);
+                dataContext.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi:\n" + ex.Message);
+                return false;
+            }
+
+        }
+        //xóa bớt người tham gia vào kì thi
+        public bool xoaNguoiThamGiaThi(string pMaTK)
+        {
+            try
+            {
+                ThamGiaThi thamGiaThi = dataContext.ThamGiaThis.FirstOrDefault(t => t.MaTK == pMaTK);
+                dataContext.ThamGiaThis.DeleteOnSubmit(thamGiaThi);
+                dataContext.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi:\n" + ex.Message);
+                return false;
+            }
+
         }
 
+        public List<TaiKhoan> loadTkThamGiaThi()
+        {
+            List<TaiKhoan> data = new List<TaiKhoan>();
+            List<ThamGiaThi> matk = dataContext.ThamGiaThis.ToList();
+            foreach(ThamGiaThi item in matk)
+            {
+                data.Add(dataContext.TaiKhoans.FirstOrDefault(t => t.MaUse == item.MaTK));
+            }
+            return data;
+        }
+        // lấy danh môn mà tài khoản được thi trog ngày cần tìm.
+        public List<LichThi> loadMonThi(string pMaUse,DateTime pNgayCanTim)
+        {
+            List<LichThi> lst = new List<LichThi>();
+            List<ThamGiaThi> lstThamGia = dataContext.ThamGiaThis.Where(t => t.MaTK == pMaUse).ToList();
+            foreach(ThamGiaThi item in lstThamGia)
+            {
+                LichThi lich = dataContext.LichThis.FirstOrDefault(lt => lt.MaLT == item.MaLT);
+                DeThi de = dataContext.DeThis.FirstOrDefault(d => d.MaDe == lich.MaDe);
+                double phut = (double)de.ThoiGian;
+                if (lich.NgayThi.Value.AddMinutes(phut) > pNgayCanTim)
+                    lst.Add(lich);
+            }    
+            return lst;
+
+        }
+        // lấy môn thi tải khoản được phép thi trong ngày hiện tại
+        public List<LichThi> loadMonThi(string pMaUse)
+        {
+            List<LichThi> lst = new List<LichThi>();
+            List<ThamGiaThi> lstThamGia = dataContext.ThamGiaThis.Where(t => t.MaTK == pMaUse).ToList();
+            foreach (ThamGiaThi item in lstThamGia)
+            {
+                LichThi lich = dataContext.LichThis.FirstOrDefault(lt => lt.MaLT == item.MaLT && lt.NgayThi.Value.Day == DateTime.Now.Day);
+                if (lich != null)
+                    lst.Add(lich);
+            }
+            return lst;
+
+        }
+        // trộn đề thi
+        public List<Sapxepde> tronDe(string pMaDe)
+        {
+            List<NoiDungDe> nd = dataContext.NoiDungDes.Where(t => t.MaDe == pMaDe).ToList();
+            List<NoiDungDe> lst = nd.OrderBy(n => Guid.NewGuid()).ToList();
+            List<Sapxepde> lsttron = new List<Sapxepde>();
+            int i = 1;
+            foreach(NoiDungDe item in lst)
+            {
+                Sapxepde sp = new Sapxepde();
+                NganHangCauHoi ch = dataContext.NganHangCauHois.FirstOrDefault(c => c.MaCH == item.MaCH);
+                sp.STT = i;
+                sp.MaCH = item.MaCH;
+                sp.NoiDung = ch.NoiDung;
+                sp.A = ch.A;
+                sp.B = ch.B;
+                sp.C = ch.C;
+                sp.D = ch.D;
+                sp.DapAn = ch.DapAn;
+                lsttron.Add(sp);
+                i++;
+
+            }
+            return lsttron;
+
+
+        }
+        // tính điểm bài làm
+        public float tinhDiem(List<Sapxepde> sapxepde)
+        {
+            int tongCau = sapxepde.Count;
+            float diem = (float)10 / tongCau;
+            int cauDung = 0;
+            foreach(Sapxepde item in sapxepde)
+            {
+                if (item.DapAn == item.dapanchon.ToCharArray()[0])
+                    cauDung++;
+            }
+            return (float)diem * cauDung;
+        }
+        // lưu bài làm
+        public bool luuBaiLam(List<Sapxepde> ds , string pmaTK, string maDe,string maLT, DateTime ngayThi)
+        {
+            try
+            {
+                List<BaiLam> lst = new List<BaiLam>();
+                int tongCau = ds.Count;
+                float diem = (float)10 / tongCau;
+                int cauDung = 0;
+                foreach (Sapxepde item in ds)
+                {
+                    BaiLam bl = new BaiLam();
+                    bl.MaTK = pmaTK;
+                    bl.MaDe = maDe;
+                    bl.MaCH = item.MaCH;
+                    bl.CauChon = item.dapanchon.ToCharArray()[0];
+                    if (item.DapAn == item.dapanchon.ToCharArray()[0])
+                        cauDung++;
+                    lst.Add(bl);
+                }
+                dataContext.BaiLams.InsertAllOnSubmit(lst);
+                diem = (float)diem * cauDung;
+                LichSuThi l = new LichSuThi();
+                l.MaLT = maLT;
+                l.MaTK = pmaTK;
+                l.Diem = diem;
+                l.MaDe = maDe;
+                l.NgayThi = ngayThi;
+                l.SoCauDung = cauDung;
+                dataContext.LichSuThis.InsertOnSubmit(l);
+                dataContext.SubmitChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi:\n" + ex.Message);
+                return false;
+            }
+        }
+        //Load lịch sử thi
+        public List<View_LichSuThi> loadLichSuThi(string pMaTK)
+        {
+            return dataContext.View_LichSuThis.Where(t=>t.MaTK==pMaTK).ToList();
+        }
     }
 }

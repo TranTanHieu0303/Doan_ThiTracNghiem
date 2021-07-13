@@ -12,6 +12,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +35,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accord, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.3.8.0\lib\net462\Accord.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.MachineLearning, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.MachineLearning.3.8.0\lib\net462\Accord.MachineLearning.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Math, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Math.3.8.0\lib\net462\Accord.Math.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Math.Core, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Math.3.8.0\lib\net462\Accord.Math.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Statistics, Version=3.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accord.Statistics.3.8.0\lib\net462\Accord.Statistics.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Data.Desktop.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v20.2.Core, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -199,11 +216,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\MonThiTheoLich.cs" />
+    <Compile Include="BLL\Sapxepde.cs" />
     <Compile Include="BLL\XuLy.cs" />
-    <Compile Include="DAL\QLThi.designer.cs">
+    <Compile Include="Cauhoi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Cauhoi.Designer.cs">
+      <DependentUpon>Cauhoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\QLThiTracNghiem.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QLThi.dbml</DependentUpon>
+      <DependentUpon>QLThiTracNghiem.dbml</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -211,11 +236,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="GIU\frm_ChuanBi.cs">
+    <Compile Include="GIU\frm_Chuanbi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GIU\frm_ChuanBi.Designer.cs">
-      <DependentUpon>frm_ChuanBi.cs</DependentUpon>
+    <Compile Include="GIU\frm_Chuanbi.Designer.cs">
+      <DependentUpon>frm_Chuanbi.cs</DependentUpon>
     </Compile>
     <Compile Include="GIU\frm_DangKy.cs">
       <SubType>Form</SubType>
@@ -234,6 +259,18 @@
     </Compile>
     <Compile Include="GIU\frm_LamBai.Designer.cs">
       <DependentUpon>frm_LamBai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GIU\frm_LichSuThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GIU\frm_LichSuThi.Designer.cs">
+      <DependentUpon>frm_LichSuThi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GIU\frm_QLTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GIU\frm_QLTaiKhoan.Designer.cs">
+      <DependentUpon>frm_QLTaiKhoan.cs</DependentUpon>
     </Compile>
     <Compile Include="GIU\frm_TaoKiThi.cs">
       <SubType>Form</SubType>
@@ -255,11 +292,19 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QL_ThiTracNghiemDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QL_ThiTracNghiemDataSet.xsd</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Cauhoi.resx">
+      <DependentUpon>Cauhoi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GIU\frm_ChuanBi.resx">
-      <DependentUpon>frm_ChuanBi.cs</DependentUpon>
+    <EmbeddedResource Include="GIU\frm_Chuanbi.resx">
+      <DependentUpon>frm_Chuanbi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GIU\frm_DangKy.resx">
       <DependentUpon>frm_DangKy.cs</DependentUpon>
@@ -270,6 +315,12 @@
     <EmbeddedResource Include="GIU\frm_LamBai.resx">
       <DependentUpon>frm_LamBai.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GIU\frm_LichSuThi.resx">
+      <DependentUpon>frm_LichSuThi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GIU\frm_QLTaiKhoan.resx">
+      <DependentUpon>frm_QLTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GIU\frm_TaoKiThi.resx">
       <DependentUpon>frm_TaoKiThi.cs</DependentUpon>
     </EmbeddedResource>
@@ -279,17 +330,18 @@
     <EmbeddedResource Include="GIU\frm_TrangChu.resx">
       <DependentUpon>frm_TrangChu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GIU\Inde.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="DAL\QLThi.dbml">
+    <None Include="DAL\QLThiTracNghiem.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>QLThi.designer.cs</LastGenOutput>
+      <LastGenOutput>QLThiTracNghiem.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DAL\QLThi.dbml.layout">
-      <DependentUpon>QLThi.dbml</DependentUpon>
+    <None Include="DAL\QLThiTracNghiem.dbml.layout">
+      <DependentUpon>QLThiTracNghiem.dbml</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -311,6 +363,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="QL_ThiTracNghiemDataSet.xsc">
+      <DependentUpon>QL_ThiTracNghiemDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QL_ThiTracNghiemDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QL_ThiTracNghiemDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QL_ThiTracNghiemDataSet.xss">
+      <DependentUpon>QL_ThiTracNghiemDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Resources\edit-file-icon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -388,5 +451,24 @@
   <ItemGroup>
     <None Include="Resources\button-round-dark-arrow-right-icon %281%291.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-contact-new-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-contact-new-icon %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profile-remove-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Alarm-Clock-Coloring-Sheets-to-Print %281%29.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Accord.3.8.0\build\Accord.targets" Condition="Exists('..\packages\Accord.3.8.0\build\Accord.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Accord.3.8.0\build\Accord.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Accord.3.8.0\build\Accord.targets'))" />
+  </Target>
 </Project>

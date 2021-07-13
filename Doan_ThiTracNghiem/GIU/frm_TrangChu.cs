@@ -66,6 +66,7 @@ namespace Doan_ThiTracNghiem.GIU
         private void stm_TaoKiThi_Click(object sender, EventArgs e)
         {
             frm_Taokithi frm = new frm_Taokithi();
+            frm.tk = tk;
             frm.Show();
         }
     }

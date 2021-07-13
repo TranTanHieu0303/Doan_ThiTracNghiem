@@ -2589,7 +2589,7 @@ namespace Doan_ThiTracNghiem.DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhAnh", DbType="NVarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HinhAnh", DbType="NVarChar(500)")]
 		public string HinhAnh
 		{
 			get

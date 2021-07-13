@@ -305,7 +305,11 @@ namespace Doan_ThiTracNghiem.BLL
                 dataContext.SubmitChanges();
                 return true;
             }
-            catch { return false; }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false; 
+            }
         }
 
     }

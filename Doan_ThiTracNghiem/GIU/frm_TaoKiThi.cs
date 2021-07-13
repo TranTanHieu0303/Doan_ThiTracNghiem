@@ -1,4 +1,5 @@
 ﻿using Doan_ThiTracNghiem.BLL;
+using Doan_ThiTracNghiem.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,9 @@ namespace Doan_ThiTracNghiem.GIU
 {
     public partial class frm_Taokithi : Form
     {
-        XuLy XL = new XuLy(); 
+        public TaiKhoan tk;
+        XuLy XL = new XuLy();
+        string maLT;
         public frm_Taokithi()
         {
             InitializeComponent();
@@ -46,6 +49,8 @@ namespace Doan_ThiTracNghiem.GIU
 
         private void btn_LuuDe_Click(object sender, EventArgs e)
         {
+            maLT = XL.themMaLichThi();
+            string made = XL.themMaDe();
             if (txt_TenDe.Text == "")
             {
                 MessageBox.Show("Hãy Nhập Tên Đề");
@@ -58,7 +63,7 @@ namespace Doan_ThiTracNghiem.GIU
             }
             else
             {
-                string made = XL.themMaDe();
+                
                 XL.themDe(made, txt_TenDe.Text, cbb_TenMon.SelectedValue.ToString(), ((int)txt_thoigian.Value));
                 if (cbb_chonloaide.SelectedIndex == 0)
                 {
@@ -100,6 +105,12 @@ namespace Doan_ThiTracNghiem.GIU
                 }    
 
             }
+            DateTime myDate = dtp_ngaythi.Value.Date +
+                    dtp_giothi.Value.TimeOfDay;
+            if (XL.themLichThi(maLT,tk.MaUse,made,myDate))
+            {
+                MessageBox.Show("Thành Công", "Thông Báo");
+            }    
         }
 
         private void cbb_chonloaide_SelectedIndexChanged(object sender, EventArgs e)

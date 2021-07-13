@@ -120,7 +120,7 @@
       <Column Name="NgaySinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="NoiSinh" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="GioiTinh" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="HinhAnh" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HinhAnh" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
       <Column Name="LoaiTK" Type="System.String" DbType="Char(5)" CanBeNull="true" />
       <Association Name="TaiKhoan_BaiLam" Member="BaiLams" ThisKey="MaUse" OtherKey="MaTK" Type="BaiLam" />
       <Association Name="TaiKhoan_ThamGiaThi" Member="ThamGiaThis" ThisKey="MaUse" OtherKey="MaTK" Type="ThamGiaThi" />

@@ -36,7 +36,7 @@ namespace Doan_ThiTracNghiem.GIU
             this.label5 = new System.Windows.Forms.Label();
             this.cbb_TenMon = new System.Windows.Forms.ComboBox();
             this.dtp_ngaythi = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtp_giothi = new System.Windows.Forms.DateTimePicker();
             this.txt_thoigian = new System.Windows.Forms.NumericUpDown();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.cbb_chonloaide = new System.Windows.Forms.ComboBox();
@@ -132,15 +132,15 @@ namespace Doan_ThiTracNghiem.GIU
             this.dtp_ngaythi.Size = new System.Drawing.Size(100, 20);
             this.dtp_ngaythi.TabIndex = 6;
             // 
-            // dateTimePicker1
+            // dtp_giothi
             // 
-            this.dateTimePicker1.CustomFormat = "";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker1.Location = new System.Drawing.Point(253, 73);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.ShowUpDown = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(89, 20);
-            this.dateTimePicker1.TabIndex = 7;
+            this.dtp_giothi.CustomFormat = "";
+            this.dtp_giothi.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtp_giothi.Location = new System.Drawing.Point(253, 73);
+            this.dtp_giothi.Name = "dtp_giothi";
+            this.dtp_giothi.ShowUpDown = true;
+            this.dtp_giothi.Size = new System.Drawing.Size(89, 20);
+            this.dtp_giothi.TabIndex = 7;
             // 
             // txt_thoigian
             // 
@@ -237,7 +237,6 @@ namespace Doan_ThiTracNghiem.GIU
             // 
             this.dgv_TatCacTS.AllowUserToAddRows = false;
             this.dgv_TatCacTS.AllowUserToOrderColumns = true;
-            this.dgv_TatCacTS.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_TatCacTS.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_TatCacTS.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -256,6 +255,7 @@ namespace Doan_ThiTracNghiem.GIU
             this.Column1.HeaderText = "Mã Tài Khoản";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            this.Column1.Width = 110;
             // 
             // Column2
             // 
@@ -263,6 +263,7 @@ namespace Doan_ThiTracNghiem.GIU
             this.Column2.HeaderText = "Tên Tài Khoản";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            this.Column2.Width = 109;
             // 
             // Column3
             // 
@@ -270,6 +271,7 @@ namespace Doan_ThiTracNghiem.GIU
             this.Column3.HeaderText = "Ngày Sinh";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
+            this.Column3.Width = 110;
             // 
             // button3
             // 
@@ -373,7 +375,7 @@ namespace Doan_ThiTracNghiem.GIU
             this.Controls.Add(this.cbb_chonloaide);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txt_thoigian);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtp_giothi);
             this.Controls.Add(this.dtp_ngaythi);
             this.Controls.Add(this.cbb_TenMon);
             this.Controls.Add(this.label5);
@@ -405,7 +407,7 @@ namespace Doan_ThiTracNghiem.GIU
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbb_TenMon;
         private System.Windows.Forms.DateTimePicker dtp_ngaythi;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtp_giothi;
         private System.Windows.Forms.NumericUpDown txt_thoigian;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ComboBox cbb_chonloaide;

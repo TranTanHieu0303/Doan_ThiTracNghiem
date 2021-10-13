@@ -177,6 +177,7 @@ namespace Doan_ThiTracNghiem.GIU
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_DangNhap";
             this.TransparencyKey = System.Drawing.Color.WhiteSmoke;
+            this.Load += new System.EventHandler(this.frm_DangNhap_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -42,11 +42,13 @@ namespace Doan_ThiTracNghiem.GIU
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lbl_TenTK = new System.Windows.Forms.Label();
             this.lbl_MaTK = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
+            this.ptb_hinhAnh = new System.Windows.Forms.PictureBox();
             this.time_prb = new System.Windows.Forms.Timer(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btn_NopBai = new System.Windows.Forms.Button();
@@ -63,17 +65,15 @@ namespace Doan_ThiTracNghiem.GIU
             this.rdb_CauB = new System.Windows.Forms.RadioButton();
             this.rdb_CauC = new System.Windows.Forms.RadioButton();
             this.rdb_CauD = new System.Windows.Forms.RadioButton();
-            this.ptb_hinhAnh = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_hinhAnh)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_hinhAnh)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -197,6 +197,17 @@ namespace Doan_ThiTracNghiem.GIU
             this.label1.TabIndex = 1;
             this.label1.Text = "Kì Thi:";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Doan_ThiTracNghiem.Properties.Resources.logo__1_;
+            this.pictureBox1.Location = new System.Drawing.Point(6, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(174, 101);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lbl_TenTK);
@@ -248,6 +259,16 @@ namespace Doan_ThiTracNghiem.GIU
             this.label20.TabIndex = 1;
             this.label20.Text = "Mã Thí Sinh:";
             // 
+            // ptb_hinhAnh
+            // 
+            this.ptb_hinhAnh.Image = global::Doan_ThiTracNghiem.Properties.Resources.logo__1_;
+            this.ptb_hinhAnh.Location = new System.Drawing.Point(107, 28);
+            this.ptb_hinhAnh.Name = "ptb_hinhAnh";
+            this.ptb_hinhAnh.Size = new System.Drawing.Size(174, 134);
+            this.ptb_hinhAnh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb_hinhAnh.TabIndex = 0;
+            this.ptb_hinhAnh.TabStop = false;
+            // 
             // time_prb
             // 
             this.time_prb.Interval = 1000;
@@ -279,9 +300,9 @@ namespace Doan_ThiTracNghiem.GIU
             // 
             // btn_CauSau
             // 
-            this.btn_CauSau.Location = new System.Drawing.Point(315, 28);
+            this.btn_CauSau.Location = new System.Drawing.Point(306, 28);
             this.btn_CauSau.Name = "btn_CauSau";
-            this.btn_CauSau.Size = new System.Drawing.Size(75, 28);
+            this.btn_CauSau.Size = new System.Drawing.Size(108, 28);
             this.btn_CauSau.TabIndex = 15;
             this.btn_CauSau.Text = "Câu Sau";
             this.btn_CauSau.UseVisualStyleBackColor = true;
@@ -421,27 +442,6 @@ namespace Doan_ThiTracNghiem.GIU
             this.rdb_CauD.UseVisualStyleBackColor = true;
             this.rdb_CauD.CheckedChanged += new System.EventHandler(this.rdb_CauD_CheckedChanged);
             // 
-            // ptb_hinhAnh
-            // 
-            this.ptb_hinhAnh.Image = global::Doan_ThiTracNghiem.Properties.Resources.logo__1_;
-            this.ptb_hinhAnh.Location = new System.Drawing.Point(107, 28);
-            this.ptb_hinhAnh.Name = "ptb_hinhAnh";
-            this.ptb_hinhAnh.Size = new System.Drawing.Size(174, 134);
-            this.ptb_hinhAnh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptb_hinhAnh.TabIndex = 0;
-            this.ptb_hinhAnh.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Doan_ThiTracNghiem.Properties.Resources.logo__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 28);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(174, 101);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // frm_LamBai
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -458,8 +458,10 @@ namespace Doan_ThiTracNghiem.GIU
             this.Load += new System.EventHandler(this.frm_LamBai_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_hinhAnh)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
@@ -467,8 +469,6 @@ namespace Doan_ThiTracNghiem.GIU
             this.groupBox5.ResumeLayout(false);
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_hinhAnh)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

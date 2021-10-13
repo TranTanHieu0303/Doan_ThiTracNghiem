@@ -1,4 +1,5 @@
 ﻿using Doan_ThiTracNghiem.BLL;
+using Doan_ThiTracNghiem.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,7 @@ namespace Doan_ThiTracNghiem.GIU
     {
         XuLy XL = new XuLy();
         Task<string> hinh;
+        bool openfile = false;
         public frm_DangKy()
         {
             InitializeComponent();
@@ -34,6 +36,7 @@ namespace Doan_ThiTracNghiem.GIU
             if (dr == DialogResult.OK)
             {
                 ptb_HinhAnh.Image = Image.FromFile(dlg_openfile.FileName);
+                openfile = true;
             }
         }
 
@@ -49,7 +52,21 @@ namespace Doan_ThiTracNghiem.GIU
                 gioitinh = "Nam";
             else
                 gioitinh = "Nữ";
-            XL.themUseAsync(XL.themMaUse(), txt_TenDN.Text, txt_MK.Text, txt_HoTen.Text, gioitinh, dtp_NgaySinh.Value.Date, txt_NoiSinh.Text, dlg_openfile, pMaLoaitk);
+            string maTK = XL.themMaUse();
+            List<ChucNangTaiKhoan> lst = new List<ChucNangTaiKhoan>();
+            ChucNangTaiKhoan cn = new ChucNangTaiKhoan();
+            cn.MaTK = maTK;
+            cn.MaCN = "CN001";
+            ChucNangTaiKhoan cn2 = new ChucNangTaiKhoan();
+            cn2.MaTK = maTK;
+            cn2.MaCN = "CN002";
+            lst.Add(cn);
+            lst.Add(cn2);
+            if (openfile)
+                XL.themUseAsync(maTK, txt_TenDN.Text, txt_MK.Text, txt_HoTen.Text, gioitinh, dtp_NgaySinh.Value.Date, txt_NoiSinh.Text, dlg_openfile, pMaLoaitk, lst);
+            else
+                XL.themUseAsync(maTK, txt_TenDN.Text, txt_MK.Text, txt_HoTen.Text, gioitinh, dtp_NgaySinh.Value.Date, txt_NoiSinh.Text, null, pMaLoaitk, lst);
+
         }
         private void QuanLai_Click(object sender, EventArgs e)
         {

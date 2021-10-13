@@ -34,7 +34,6 @@ namespace Doan_ThiTracNghiem.GIU
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.lbl_NgayThi = new System.Windows.Forms.Label();
             this.lbl_Tgconlai = new System.Windows.Forms.Label();
@@ -82,20 +81,10 @@ namespace Doan_ThiTracNghiem.GIU
             this.label4.TabIndex = 4;
             this.label4.Text = "Thời Gian Còn lại";
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button1.Location = new System.Drawing.Point(85, 212);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 37);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Bắt Đầu";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button2.Location = new System.Drawing.Point(416, 212);
+            this.button2.Location = new System.Drawing.Point(192, 212);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(98, 37);
             this.button2.TabIndex = 6;
@@ -134,13 +123,13 @@ namespace Doan_ThiTracNghiem.GIU
             this.Controls.Add(this.lbl_Tgconlai);
             this.Controls.Add(this.lbl_NgayThi);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbb_LichThi);
             this.Name = "frm_Chuanbi";
-            this.Text = "frm_Chuanbi";
+            this.Text = "Chờ Vào Thi";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frm_Chuanbi_FormClosed);
             this.Load += new System.EventHandler(this.frm_Chuanbi_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -153,7 +142,6 @@ namespace Doan_ThiTracNghiem.GIU
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label lbl_NgayThi;
         private System.Windows.Forms.Label lbl_Tgconlai;

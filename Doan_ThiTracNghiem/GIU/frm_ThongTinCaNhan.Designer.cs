@@ -229,6 +229,7 @@ namespace Doan_ThiTracNghiem.GIU
             this.QuanLai.Text = "Quay Lại";
             this.QuanLai.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.QuanLai.UseVisualStyleBackColor = true;
+            this.QuanLai.Click += new System.EventHandler(this.QuanLai_Click);
             // 
             // btn_DangKy
             // 
@@ -272,6 +273,7 @@ namespace Doan_ThiTracNghiem.GIU
             this.Controls.Add(this.label1);
             this.Name = "frm_ThongTinCaNhan";
             this.Text = "Thông Tin Cá Nhân";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frm_ThongTinCaNhan_FormClosed);
             this.Load += new System.EventHandler(this.frm_ThongTinCaNhan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ptb_HinhAnh)).EndInit();
             this.ResumeLayout(false);

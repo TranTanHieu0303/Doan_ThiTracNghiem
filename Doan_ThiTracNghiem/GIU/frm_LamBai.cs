@@ -24,9 +24,11 @@ namespace Doan_ThiTracNghiem.GIU
         int giay= 0;
         Cauhoi uschon;
         List<Sapxepde> sapxepdes;
-        public frm_LamBai()
+        Form _frm;
+        public frm_LamBai(Form frm)
         {
             InitializeComponent();
+            _frm = frm;
             
         }
 
@@ -175,6 +177,16 @@ namespace Doan_ThiTracNghiem.GIU
                 if (phut == 0 && giay == 0)
                 {
                     time_prb.Stop();
+                    MessageBox.Show("Bạn đã hết thời gian làm bài");
+                    if (XL.luuBaiLam(sapxepdes, tk.MaUse, deThi.MaDe, lt.MaLT, DateTime.Now))
+                    {
+                        MessageBox.Show("Nộp bài thành công.");
+                        this.Close();
+                        frm_TrangChu frm = new frm_TrangChu(_frm);
+                        frm.tk = tk;
+                        frm.Show();
+                        this.Close();
+                    }
                 }
             }
             lbl_Thgcon.Text = phut + ":" + giay;
@@ -292,6 +304,11 @@ namespace Doan_ThiTracNghiem.GIU
             if(XL.luuBaiLam(sapxepdes,tk.MaUse,deThi.MaDe,lt.MaLT,DateTime.Now))
             {
                 MessageBox.Show("Nộp bài thành công.");
+                this.Close();
+                frm_TrangChu frm = new frm_TrangChu(_frm);
+                frm.tk = tk;
+                frm.Show();
+                this.Close();
             }    
         }
     }

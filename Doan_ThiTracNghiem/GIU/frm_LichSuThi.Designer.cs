@@ -30,14 +30,14 @@ namespace Doan_ThiTracNghiem.GIU
         private void InitializeComponent()
         {
             this.dgv_lichsu = new System.Windows.Forms.DataGridView();
-            this.btn_In = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_In = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_lichsu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,24 +60,6 @@ namespace Doan_ThiTracNghiem.GIU
             this.dgv_lichsu.ReadOnly = true;
             this.dgv_lichsu.Size = new System.Drawing.Size(903, 268);
             this.dgv_lichsu.TabIndex = 0;
-            // 
-            // btn_In
-            // 
-            this.btn_In.Location = new System.Drawing.Point(840, 12);
-            this.btn_In.Name = "btn_In";
-            this.btn_In.Size = new System.Drawing.Size(75, 23);
-            this.btn_In.TabIndex = 1;
-            this.btn_In.Text = "In đề thi";
-            this.btn_In.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Thoát";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // Column1
             // 
@@ -121,6 +103,25 @@ namespace Doan_ThiTracNghiem.GIU
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
+            // btn_In
+            // 
+            this.btn_In.Location = new System.Drawing.Point(840, 12);
+            this.btn_In.Name = "btn_In";
+            this.btn_In.Size = new System.Drawing.Size(75, 23);
+            this.btn_In.TabIndex = 1;
+            this.btn_In.Text = "In đề thi";
+            this.btn_In.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Thoát";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frm_LichSuThi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -131,6 +132,7 @@ namespace Doan_ThiTracNghiem.GIU
             this.Controls.Add(this.dgv_lichsu);
             this.Name = "frm_LichSuThi";
             this.Text = "frm_LichSuThi";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frm_LichSuThi_FormClosed);
             this.Load += new System.EventHandler(this.frm_LichSuThi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_lichsu)).EndInit();
             this.ResumeLayout(false);

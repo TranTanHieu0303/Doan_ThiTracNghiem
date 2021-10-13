@@ -93,6 +93,16 @@ namespace Doan_ThiTracNghiem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Button_Delete_icon {
+            get {
+                object obj = ResourceManager.GetObject("Button-Delete-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap button_round_dark_arrow_left_icon {
             get {
                 object obj = ResourceManager.GetObject("button-round-dark-arrow-left-icon", resourceCulture);

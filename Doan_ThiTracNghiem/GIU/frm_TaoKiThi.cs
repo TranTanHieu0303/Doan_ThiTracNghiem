@@ -67,7 +67,7 @@ namespace Doan_ThiTracNghiem.GIU
             else
             {
                 
-                XL.themDe(made, txt_TenDe.Text, cbb_TenMon.SelectedValue.ToString(), ((int)txt_thoigian.Value));
+                XL.themDe(made, txt_TenDe.Text, cbb_TenMon.SelectedValue.ToString(), ((int)txt_thoigian.Value),(int)txt_soccau.Value);
                 if (cbb_chonloaide.SelectedIndex == 0)
                 {
                     bool kt = true;

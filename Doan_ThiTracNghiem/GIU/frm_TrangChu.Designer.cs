@@ -32,34 +32,30 @@ namespace Doan_ThiTracNghiem.GIU
             this.components = new System.ComponentModel.Container();
             this.lbl_HoTen = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_ThongTinCaNhan = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lbl_matk = new System.Windows.Forms.Label();
+            this.ptb_avatar = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.menu_BaiThi = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btn_ThiTheoLich = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_OnThi = new System.Windows.Forms.ToolStripMenuItem();
-            this.menu_QuanLy = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.btn_lamBaiThi = new System.Windows.Forms.Button();
             this.btn_LichSu = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btn_QuanLy = new System.Windows.Forms.Button();
-            this.btn_ThongTinCaNhan = new System.Windows.Forms.Button();
-            this.ptb_avatar = new System.Windows.Forms.PictureBox();
+            this.menu_QuanLy = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsm_QLTK = new System.Windows.Forms.ToolStripMenuItem();
             this.tsm_QLDeThi = new System.Windows.Forms.ToolStripMenuItem();
             this.stm_TaoKiThi = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_avatar)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
-            this.menu_BaiThi.SuspendLayout();
             this.menu_QuanLy.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_avatar)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_HoTen
@@ -86,6 +82,20 @@ namespace Doan_ThiTracNghiem.GIU
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin tài khoản";
+            // 
+            // btn_ThongTinCaNhan
+            // 
+            this.btn_ThongTinCaNhan.AutoSize = true;
+            this.btn_ThongTinCaNhan.BackColor = System.Drawing.Color.Transparent;
+            this.btn_ThongTinCaNhan.FlatAppearance.BorderSize = 0;
+            this.btn_ThongTinCaNhan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ThongTinCaNhan.Image = global::Doan_ThiTracNghiem.Properties.Resources.edit_file_icon;
+            this.btn_ThongTinCaNhan.Location = new System.Drawing.Point(177, 10);
+            this.btn_ThongTinCaNhan.Name = "btn_ThongTinCaNhan";
+            this.btn_ThongTinCaNhan.Size = new System.Drawing.Size(40, 40);
+            this.btn_ThongTinCaNhan.TabIndex = 5;
+            this.btn_ThongTinCaNhan.UseVisualStyleBackColor = false;
+            this.btn_ThongTinCaNhan.Click += new System.EventHandler(this.btn_ThongTinCaNhan_Click);
             // 
             // label3
             // 
@@ -115,6 +125,15 @@ namespace Doan_ThiTracNghiem.GIU
             this.lbl_matk.TabIndex = 2;
             this.lbl_matk.Text = "label1";
             // 
+            // ptb_avatar
+            // 
+            this.ptb_avatar.Location = new System.Drawing.Point(51, 19);
+            this.ptb_avatar.Name = "ptb_avatar";
+            this.ptb_avatar.Size = new System.Drawing.Size(98, 106);
+            this.ptb_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb_avatar.TabIndex = 0;
+            this.ptb_avatar.TabStop = false;
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.btn_lamBaiThi);
@@ -127,26 +146,78 @@ namespace Doan_ThiTracNghiem.GIU
             this.flowLayoutPanel1.Size = new System.Drawing.Size(480, 106);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
-            // menu_BaiThi
+            // btn_lamBaiThi
             // 
-            this.menu_BaiThi.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btn_ThiTheoLich,
-            this.btn_OnThi});
-            this.menu_BaiThi.Name = "contextMenuStrip1";
-            this.menu_BaiThi.Size = new System.Drawing.Size(190, 48);
+            this.btn_lamBaiThi.AutoSize = true;
+            this.btn_lamBaiThi.BackColor = System.Drawing.Color.Transparent;
+            this.btn_lamBaiThi.FlatAppearance.BorderSize = 0;
+            this.btn_lamBaiThi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_lamBaiThi.Image = global::Doan_ThiTracNghiem.Properties.Resources.Test_paper_icon;
+            this.btn_lamBaiThi.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_lamBaiThi.Location = new System.Drawing.Point(3, 3);
+            this.btn_lamBaiThi.Name = "btn_lamBaiThi";
+            this.btn_lamBaiThi.Size = new System.Drawing.Size(100, 89);
+            this.btn_lamBaiThi.TabIndex = 0;
+            this.btn_lamBaiThi.Tag = "CN001";
+            this.btn_lamBaiThi.Text = "Làm Bài Thi";
+            this.btn_lamBaiThi.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_lamBaiThi.UseVisualStyleBackColor = false;
+            this.btn_lamBaiThi.Click += new System.EventHandler(this.btn_lamBaiThi_Click);
             // 
-            // btn_ThiTheoLich
+            // btn_LichSu
             // 
-            this.btn_ThiTheoLich.Name = "btn_ThiTheoLich";
-            this.btn_ThiTheoLich.Size = new System.Drawing.Size(189, 22);
-            this.btn_ThiTheoLich.Text = "Làm Bài Thi Theo Lịch";
-            this.btn_ThiTheoLich.Click += new System.EventHandler(this.btn_ThiTheoLich_Click);
+            this.btn_LichSu.AutoSize = true;
+            this.btn_LichSu.BackColor = System.Drawing.Color.Transparent;
+            this.btn_LichSu.FlatAppearance.BorderSize = 0;
+            this.btn_LichSu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_LichSu.Image = global::Doan_ThiTracNghiem.Properties.Resources.order_history_icon;
+            this.btn_LichSu.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_LichSu.Location = new System.Drawing.Point(109, 3);
+            this.btn_LichSu.Name = "btn_LichSu";
+            this.btn_LichSu.Size = new System.Drawing.Size(99, 89);
+            this.btn_LichSu.TabIndex = 1;
+            this.btn_LichSu.Tag = "CN002";
+            this.btn_LichSu.Text = "Lịch Sử Thi";
+            this.btn_LichSu.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_LichSu.UseVisualStyleBackColor = false;
+            this.btn_LichSu.Click += new System.EventHandler(this.btn_LichSu_Click);
             // 
-            // btn_OnThi
+            // button4
             // 
-            this.btn_OnThi.Name = "btn_OnThi";
-            this.btn_OnThi.Size = new System.Drawing.Size(189, 22);
-            this.btn_OnThi.Text = "Ôn Thi";
+            this.button4.AutoSize = true;
+            this.button4.BackColor = System.Drawing.Color.Transparent;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Image = global::Doan_ThiTracNghiem.Properties.Resources.Mimetypesicon;
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button4.Location = new System.Drawing.Point(214, 3);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(99, 89);
+            this.button4.TabIndex = 2;
+            this.button4.Tag = "CN003";
+            this.button4.Text = "Thống Kê";
+            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // btn_QuanLy
+            // 
+            this.btn_QuanLy.AutoSize = true;
+            this.btn_QuanLy.BackColor = System.Drawing.Color.Transparent;
+            this.btn_QuanLy.ContextMenuStrip = this.menu_QuanLy;
+            this.btn_QuanLy.FlatAppearance.BorderSize = 0;
+            this.btn_QuanLy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_QuanLy.Image = global::Doan_ThiTracNghiem.Properties.Resources.system_settings_icon;
+            this.btn_QuanLy.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btn_QuanLy.Location = new System.Drawing.Point(319, 3);
+            this.btn_QuanLy.Name = "btn_QuanLy";
+            this.btn_QuanLy.Size = new System.Drawing.Size(129, 89);
+            this.btn_QuanLy.TabIndex = 3;
+            this.btn_QuanLy.Tag = "CN004";
+            this.btn_QuanLy.Text = "Quản lý hệ thống";
+            this.btn_QuanLy.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_QuanLy.UseVisualStyleBackColor = false;
+            this.btn_QuanLy.Click += new System.EventHandler(this.btn_QuanLy_Click);
             // 
             // menu_QuanLy
             // 
@@ -158,6 +229,33 @@ namespace Doan_ThiTracNghiem.GIU
             this.stm_TaoKiThi});
             this.menu_QuanLy.Name = "menu_QuanLy";
             this.menu_QuanLy.Size = new System.Drawing.Size(201, 82);
+            // 
+            // tsm_QLTK
+            // 
+            this.tsm_QLTK.Image = global::Doan_ThiTracNghiem.Properties.Resources.system_user_man_icon;
+            this.tsm_QLTK.Name = "tsm_QLTK";
+            this.tsm_QLTK.Size = new System.Drawing.Size(200, 26);
+            this.tsm_QLTK.Tag = "CN005";
+            this.tsm_QLTK.Text = "Quản lý tài khoản";
+            this.tsm_QLTK.Click += new System.EventHandler(this.tsm_QLTK_Click);
+            // 
+            // tsm_QLDeThi
+            // 
+            this.tsm_QLDeThi.Image = global::Doan_ThiTracNghiem.Properties.Resources.System_explorer_icon;
+            this.tsm_QLDeThi.Name = "tsm_QLDeThi";
+            this.tsm_QLDeThi.Size = new System.Drawing.Size(200, 26);
+            this.tsm_QLDeThi.Tag = "CN006";
+            this.tsm_QLDeThi.Text = "Quản lý dữ liệu";
+            this.tsm_QLDeThi.Click += new System.EventHandler(this.tsm_QLDeThi_Click);
+            // 
+            // stm_TaoKiThi
+            // 
+            this.stm_TaoKiThi.Image = global::Doan_ThiTracNghiem.Properties.Resources.korganizer_icon;
+            this.stm_TaoKiThi.Name = "stm_TaoKiThi";
+            this.stm_TaoKiThi.Size = new System.Drawing.Size(200, 26);
+            this.stm_TaoKiThi.Tag = "CN007";
+            this.stm_TaoKiThi.Text = "Tạo Kì Thi";
+            this.stm_TaoKiThi.Click += new System.EventHandler(this.stm_TaoKiThi_Click);
             // 
             // groupBox2
             // 
@@ -210,128 +308,6 @@ namespace Doan_ThiTracNghiem.GIU
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btn_lamBaiThi
-            // 
-            this.btn_lamBaiThi.AutoSize = true;
-            this.btn_lamBaiThi.BackColor = System.Drawing.Color.Transparent;
-            this.btn_lamBaiThi.ContextMenuStrip = this.menu_BaiThi;
-            this.btn_lamBaiThi.FlatAppearance.BorderSize = 0;
-            this.btn_lamBaiThi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_lamBaiThi.Image = global::Doan_ThiTracNghiem.Properties.Resources.Test_paper_icon;
-            this.btn_lamBaiThi.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_lamBaiThi.Location = new System.Drawing.Point(3, 3);
-            this.btn_lamBaiThi.Name = "btn_lamBaiThi";
-            this.btn_lamBaiThi.Size = new System.Drawing.Size(100, 89);
-            this.btn_lamBaiThi.TabIndex = 0;
-            this.btn_lamBaiThi.Tag = "CN001";
-            this.btn_lamBaiThi.Text = "Làm Bài Thi";
-            this.btn_lamBaiThi.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_lamBaiThi.UseVisualStyleBackColor = false;
-            this.btn_lamBaiThi.Click += new System.EventHandler(this.btn_lamBaiThi_Click);
-            // 
-            // btn_LichSu
-            // 
-            this.btn_LichSu.AutoSize = true;
-            this.btn_LichSu.BackColor = System.Drawing.Color.Transparent;
-            this.btn_LichSu.FlatAppearance.BorderSize = 0;
-            this.btn_LichSu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_LichSu.Image = global::Doan_ThiTracNghiem.Properties.Resources.order_history_icon;
-            this.btn_LichSu.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_LichSu.Location = new System.Drawing.Point(109, 3);
-            this.btn_LichSu.Name = "btn_LichSu";
-            this.btn_LichSu.Size = new System.Drawing.Size(99, 89);
-            this.btn_LichSu.TabIndex = 1;
-            this.btn_LichSu.Tag = "CN002";
-            this.btn_LichSu.Text = "Lịch Sử Thi";
-            this.btn_LichSu.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_LichSu.UseVisualStyleBackColor = false;
-            this.btn_LichSu.Click += new System.EventHandler(this.btn_LichSu_Click);
-            // 
-            // button4
-            // 
-            this.button4.AutoSize = true;
-            this.button4.BackColor = System.Drawing.Color.Transparent;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Image = global::Doan_ThiTracNghiem.Properties.Resources.Mimetypesicon;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button4.Location = new System.Drawing.Point(214, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(99, 89);
-            this.button4.TabIndex = 2;
-            this.button4.Tag = "CN003";
-            this.button4.Text = "Thống Kê";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.UseVisualStyleBackColor = false;
-            // 
-            // btn_QuanLy
-            // 
-            this.btn_QuanLy.AutoSize = true;
-            this.btn_QuanLy.BackColor = System.Drawing.Color.Transparent;
-            this.btn_QuanLy.ContextMenuStrip = this.menu_QuanLy;
-            this.btn_QuanLy.FlatAppearance.BorderSize = 0;
-            this.btn_QuanLy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_QuanLy.Image = global::Doan_ThiTracNghiem.Properties.Resources.system_settings_icon;
-            this.btn_QuanLy.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_QuanLy.Location = new System.Drawing.Point(319, 3);
-            this.btn_QuanLy.Name = "btn_QuanLy";
-            this.btn_QuanLy.Size = new System.Drawing.Size(129, 89);
-            this.btn_QuanLy.TabIndex = 3;
-            this.btn_QuanLy.Tag = "CN004";
-            this.btn_QuanLy.Text = "Quản lý hệ thống";
-            this.btn_QuanLy.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_QuanLy.UseVisualStyleBackColor = false;
-            this.btn_QuanLy.Click += new System.EventHandler(this.btn_QuanLy_Click);
-            // 
-            // btn_ThongTinCaNhan
-            // 
-            this.btn_ThongTinCaNhan.AutoSize = true;
-            this.btn_ThongTinCaNhan.BackColor = System.Drawing.Color.Transparent;
-            this.btn_ThongTinCaNhan.FlatAppearance.BorderSize = 0;
-            this.btn_ThongTinCaNhan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ThongTinCaNhan.Image = global::Doan_ThiTracNghiem.Properties.Resources.edit_file_icon;
-            this.btn_ThongTinCaNhan.Location = new System.Drawing.Point(177, 10);
-            this.btn_ThongTinCaNhan.Name = "btn_ThongTinCaNhan";
-            this.btn_ThongTinCaNhan.Size = new System.Drawing.Size(40, 40);
-            this.btn_ThongTinCaNhan.TabIndex = 5;
-            this.btn_ThongTinCaNhan.UseVisualStyleBackColor = false;
-            this.btn_ThongTinCaNhan.Click += new System.EventHandler(this.btn_ThongTinCaNhan_Click);
-            // 
-            // ptb_avatar
-            // 
-            this.ptb_avatar.Location = new System.Drawing.Point(51, 19);
-            this.ptb_avatar.Name = "ptb_avatar";
-            this.ptb_avatar.Size = new System.Drawing.Size(98, 106);
-            this.ptb_avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ptb_avatar.TabIndex = 0;
-            this.ptb_avatar.TabStop = false;
-            // 
-            // tsm_QLTK
-            // 
-            this.tsm_QLTK.Image = global::Doan_ThiTracNghiem.Properties.Resources.system_user_man_icon;
-            this.tsm_QLTK.Name = "tsm_QLTK";
-            this.tsm_QLTK.Size = new System.Drawing.Size(200, 26);
-            this.tsm_QLTK.Tag = "CN005";
-            this.tsm_QLTK.Text = "Quản lý tài khoản";
-            this.tsm_QLTK.Click += new System.EventHandler(this.tsm_QLTK_Click);
-            // 
-            // tsm_QLDeThi
-            // 
-            this.tsm_QLDeThi.Image = global::Doan_ThiTracNghiem.Properties.Resources.System_explorer_icon;
-            this.tsm_QLDeThi.Name = "tsm_QLDeThi";
-            this.tsm_QLDeThi.Size = new System.Drawing.Size(200, 26);
-            this.tsm_QLDeThi.Tag = "CN006";
-            this.tsm_QLDeThi.Text = "Quản lý dữ liệu";
-            // 
-            // stm_TaoKiThi
-            // 
-            this.stm_TaoKiThi.Image = global::Doan_ThiTracNghiem.Properties.Resources.korganizer_icon;
-            this.stm_TaoKiThi.Name = "stm_TaoKiThi";
-            this.stm_TaoKiThi.Size = new System.Drawing.Size(200, 26);
-            this.stm_TaoKiThi.Tag = "CN007";
-            this.stm_TaoKiThi.Text = "Tạo Kì Thi";
-            this.stm_TaoKiThi.Click += new System.EventHandler(this.stm_TaoKiThi_Click);
-            // 
             // frm_TrangChu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,13 +326,12 @@ namespace Doan_ThiTracNghiem.GIU
             this.Load += new System.EventHandler(this.frm_TrangChu_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_avatar)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            this.menu_BaiThi.ResumeLayout(false);
             this.menu_QuanLy.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ptb_avatar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -384,8 +359,5 @@ namespace Doan_ThiTracNghiem.GIU
         private System.Windows.Forms.ToolStripMenuItem tsm_QLTK;
         private System.Windows.Forms.ToolStripMenuItem tsm_QLDeThi;
         private System.Windows.Forms.ToolStripMenuItem stm_TaoKiThi;
-        private System.Windows.Forms.ContextMenuStrip menu_BaiThi;
-        private System.Windows.Forms.ToolStripMenuItem btn_ThiTheoLich;
-        private System.Windows.Forms.ToolStripMenuItem btn_OnThi;
     }
 }

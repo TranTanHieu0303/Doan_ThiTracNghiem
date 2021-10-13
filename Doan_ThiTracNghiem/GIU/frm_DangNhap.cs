@@ -32,9 +32,10 @@ namespace Doan_ThiTracNghiem.GIU
             TaiKhoan t = XL.ktDangNhap(pUse, pPass);
             if (t != null)
             {
-                frm_TrangChu frm = new frm_TrangChu();
+                frm_TrangChu frm = new frm_TrangChu(this);
                 frm.tk = t;
                 frm.Show();
+                this.Hide();
             }
             else
                 MessageBox.Show("Tài khoản hoặc mật khẩu không chích xác\nVui lòng kiểm tra lại", "Thông Báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
@@ -45,6 +46,12 @@ namespace Doan_ThiTracNghiem.GIU
             frm_DangKy frm = new frm_DangKy();
             frm.ShowDialog();
             
+        }
+
+        private void frm_DangNhap_Load(object sender, EventArgs e)
+        {
+           
+           
         }
     }
 }

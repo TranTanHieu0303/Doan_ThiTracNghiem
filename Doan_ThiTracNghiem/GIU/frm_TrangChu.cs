@@ -16,9 +16,11 @@ namespace Doan_ThiTracNghiem.GIU
     {
         public TaiKhoan tk;
         XuLy XL = new XuLy();
-        public frm_TrangChu()
+        Form _frm;
+        public frm_TrangChu(Form frm)
         {
             InitializeComponent();
+            _frm = frm;
         }
 
         private void frm_TrangChu_Load(object sender, EventArgs e)
@@ -38,24 +40,41 @@ namespace Doan_ThiTracNghiem.GIU
                     else
                         item.Visible = false;
                 }    
+            } 
+            foreach(ToolStripMenuItem i in menu_QuanLy.Items)
+            {
+                foreach (ChucNangTaiKhoan cn in XL.loadQuyen(tk.MaUse))
+                {
+
+                    if (cn.MaCN == i.Tag.ToString())
+                    {
+                        i.Visible = true;
+                        break;
+                    }
+                    else
+                        i.Visible = false;
+                }
             }    
         }
 
         private void btn_ThongTinCaNhan_Click(object sender, EventArgs e)
         {
-            frm_ThongTinCaNhan frm = new frm_ThongTinCaNhan();
+            frm_ThongTinCaNhan frm = new frm_ThongTinCaNhan(_frm);
             frm.tk = tk;
             frm.ShowDialog();
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+
+            Application.Exit();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             this.Close();
+            _frm.Show();
         }
 
         private void btn_QuanLy_Click(object sender, EventArgs e)
@@ -72,36 +91,54 @@ namespace Doan_ThiTracNghiem.GIU
 
         private void btn_ThiTheoLich_Click(object sender, EventArgs e)
         {
-            if(XL.loadMonThi(tk.MaUse).Count==0)
-            {
-                MessageBox.Show("Hôm Nay bạn Không Có Lịch Thi");
-            }   
-            else
-            {
-                frm_Chuanbi frm = new frm_Chuanbi();
-                frm.tk = tk;
-                frm.Show();
-            }    
+             
         }
 
         private void btn_lamBaiThi_Click(object sender, EventArgs e)
         {
-            menu_BaiThi.Show(btn_lamBaiThi, new Point(0, btn_lamBaiThi.Height));
+            if (XL.loadMonThi(tk.MaUse).Count == 0)
+            {
+                MessageBox.Show("Hôm Nay bạn Không Có Lịch Thi");
+            }
+            else
+            {
+                frm_Chuanbi frm = new frm_Chuanbi(_frm);
+                frm.tk = tk;
+                frm.Show();
+            }
         }
 
         private void btn_LichSu_Click(object sender, EventArgs e)
         {
-            frm_LichSuThi frm = new frm_LichSuThi();
+            frm_LichSuThi frm = new frm_LichSuThi(_frm);
             frm.tk = tk;
             frm.Show();
+            this.Close();
         }
 
         private void tsm_QLTK_Click(object sender, EventArgs e)
         {
-            frm_QLTaiKhoan frm = new frm_QLTaiKhoan();
+            frm_QLTaiKhoan frm = new frm_QLTaiKhoan(_frm);
             frm.tk = tk;
             frm.Show();
+            this.Close();
 
+        }
+
+        private void tsm_QLDeThi_Click(object sender, EventArgs e)
+        {
+            frm_QLDuLieu frm = new frm_QLDuLieu(_frm);
+            frm.tk = tk;
+            frm.Show();
+            this.Close();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            frm_thongke frm = new frm_thongke(_frm);
+            frm.tk = tk;
+            frm.Show();
+            this.Close();
         }
     }
 }

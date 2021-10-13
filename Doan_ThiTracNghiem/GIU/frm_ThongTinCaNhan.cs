@@ -17,9 +17,11 @@ namespace Doan_ThiTracNghiem.GIU
         public TaiKhoan tk;
         bool fileoen = false;
         XuLy XL = new XuLy();
-        public frm_ThongTinCaNhan()
+        Form _frm;
+        public frm_ThongTinCaNhan(Form frm)
         {
             InitializeComponent();
+            _frm = frm;
         }
 
         private void frm_ThongTinCaNhan_Load(object sender, EventArgs e)
@@ -59,10 +61,23 @@ namespace Doan_ThiTracNghiem.GIU
                 gioitinh = "Nam";
             else
                 gioitinh = "Nữ";
+            List<ChucNangTaiKhoan> lst = XL.loadQuyen(tk.MaUse);
             if (fileoen)
-                XL.suaUseAsync(tk.MaUse, txt_TenDN.Text, txt_MK.Text, txt_HoTen.Text, gioitinh, dtp_NgaySinh.Value.Date, txt_NoiSinh.Text, dlg_openfile, tk.LoaiTK);
+                XL.suaUseAsync(tk.MaUse, txt_TenDN.Text, txt_MK.Text, txt_HoTen.Text, gioitinh, dtp_NgaySinh.Value.Date, txt_NoiSinh.Text, dlg_openfile, tk.LoaiTK,lst);
             else
-                XL.suaUseAsync(tk.MaUse, txt_TenDN.Text, txt_MK.Text, txt_HoTen.Text, gioitinh, dtp_NgaySinh.Value.Date, txt_NoiSinh.Text, null, tk.LoaiTK);
+                XL.suaUseAsync(tk.MaUse, txt_TenDN.Text, txt_MK.Text, txt_HoTen.Text, gioitinh, dtp_NgaySinh.Value.Date, txt_NoiSinh.Text, null, tk.LoaiTK,lst);
+        }
+
+        private void QuanLai_Click(object sender, EventArgs e)
+        {
+            frm_TrangChu frm = new frm_TrangChu(_frm);
+            frm.tk = tk;
+            frm.Show();
+            this.Close();
+        }
+
+        private void frm_ThongTinCaNhan_FormClosed(object sender, FormClosedEventArgs e)
+        {
         }
     }
 }

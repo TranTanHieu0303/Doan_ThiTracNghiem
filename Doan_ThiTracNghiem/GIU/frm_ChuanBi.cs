@@ -18,9 +18,11 @@ namespace Doan_ThiTracNghiem.GIU
         XuLy XL = new XuLy();
         QLThiTracNghiemDataContext data = new QLThiTracNghiemDataContext();
         LichThi licht;
-        public frm_Chuanbi()
+        Form _frm;
+        public frm_Chuanbi(Form frm)
         {
             InitializeComponent();
+            _frm = frm;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -30,6 +32,10 @@ namespace Doan_ThiTracNghiem.GIU
 
         private void button2_Click(object sender, EventArgs e)
         {
+
+            frm_TrangChu frm = new frm_TrangChu(_frm);
+            frm.tk = tk;
+            frm.Show();
             this.Close();
         }
 
@@ -71,10 +77,11 @@ namespace Doan_ThiTracNghiem.GIU
                 DialogResult dr= MessageBox.Show("Bạn Có Thể Bắt đầu làm bài.\nNhấn OK Để Bắt Đầu", "Bắt Đầu", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if(dr== DialogResult.OK)
                 {
-                    frm_LamBai frm = new frm_LamBai();
+                    frm_LamBai frm = new frm_LamBai(_frm);
                     frm.tk = tk;
                     frm.lt = licht;
                     frm.Show();
+                    this.Close();
                 }    
             }    
         }
@@ -84,6 +91,10 @@ namespace Doan_ThiTracNghiem.GIU
             cbb_LichThi.DataSource = XL.loadMonThi(tk.MaUse, DateTime.Now);
             cbb_LichThi.DisplayMember = "TenKyThi";
             cbb_LichThi.ValueMember = "MaLT";
+        }
+
+        private void frm_Chuanbi_FormClosed(object sender, FormClosedEventArgs e)
+        {
         }
     }
 }
